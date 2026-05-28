@@ -3,36 +3,28 @@ package com.liveocr
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
-import rikka.shizuku.Shizuku
-import java.io.ByteArrayOutputStream
-import java.io.InputStream
+import java.io.File
 
 object ScreenCaptureHelper {
 
     private const val TAG = "ScreenCaptureHelper"
+    private const val SCREENSHOT_PATH = "/sdcard/liveocr_tmp.png"
 
-    /**
-     * Capture screen via Shizuku shell (screencap -p)
-     * Returns Bitmap or null on failure
-     */
     fun captureScreen(): Bitmap? {
         return try {
-            // Use Shizuku to run screencap and pipe PNG output
-            val process = ShizukuShell.exec("screencap -p")
-            val inputStream: InputStream = process.inputStream
-            val baos = ByteArrayOutputStream()
-            val buffer = ByteArray(8192)
-            var read: Int
-            while (inputStream.read(buffer).also { read = it } != -1) {
-                baos.write(buffer, 0, read)
-            }
+            // Jalankan screencap via Shizuku, simpan ke file
+            val process = ShizukuShell.exec("screencap -p $SCREENSHOT_PATH")
             process.waitFor()
-            val bytes = baos.toByteArray()
-            if (bytes.isEmpty()) {
-                Log.e(TAG, "screencap returned empty data")
+
+            val file = File(SCREENSHOT_PATH)
+            if (!file.exists() || file.length() == 0L) {
+                Log.e(TAG, "screencap file missing or empty")
                 return null
             }
-            BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+
+            val bmp = BitmapFactory.decodeFile(SCREENSHOT_PATH)
+            file.delete()
+            bmp
         } catch (e: Exception) {
             Log.e(TAG, "captureScreen failed: ${e.message}")
             null
