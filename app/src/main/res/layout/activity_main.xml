@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Live OCR"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Shizuku status -->
+        <TextView
+            android:id="@+id/tvShizukuStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shizuku: Checking..."
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnGrantShizuku"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Grant Shizuku Permission"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Service status -->
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status: Stopped"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnToggleService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start OCR"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Interval setting -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Interval (detik):"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <EditText
+                android:id="@+id/etInterval"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:hint="2"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnSaveInterval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Simpan" />
+        </LinearLayout>
+
+        <!-- Trigger management -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tambah Trigger:"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etKeyword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Keyword (contoh: error, connected)"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Shell action (kosong = hanya notifikasi)"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnAddTrigger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tambah Trigger"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Trigger list -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trigger aktif:"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvTriggerList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="(belum ada trigger)"
+            android:fontFamily="monospace"
+            android:background="#F5F5F5"
+            android:padding="8dp" />
+
+    </LinearLayout>
+</ScrollView>

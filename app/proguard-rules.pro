@@ -1,0 +1,3 @@
+-keep class rikka.shizuku.** { *; }
+-keep class com.google.mlkit.** { *; }
+-dontwarn rikka.**
