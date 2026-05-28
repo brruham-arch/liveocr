@@ -47,8 +47,7 @@ dependencies {
     implementation "dev.rikka.shizuku:provider:$shizuku_version"
 
     // MLKit OCR (offline)
-    implementation 'com.google.mlkit:text-recognition:16.0.0'
-    implementation 'com.google.mlkit:text-recognition-latin:16.0.0'
+    implementation 'com.google.mlkit:text-recognition:16.0.1'
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
